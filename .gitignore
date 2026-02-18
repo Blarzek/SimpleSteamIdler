@@ -1,0 +1,30 @@
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.suo
+*.ncb
+*.opensdf
+*.sdf
+*.ipch
+*.user
+*.VC.db
+
+# Build
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.idb
+
+# Release folders
+release/
+
+# Mac / OS X
+.DS_Store
+
+# Logs
+*.log
+
+# Optional: backup files
+*~
