@@ -377,6 +377,9 @@ int main(int argc, char* argv[])
     print_utf8_line("=   Welcome to SimpleSteamIdler, by Blarzek   =");
     print_utf8_line("===============================================");
 
+    // Empty line below for spacing
+    print_utf8_line("");
+
     // Ensure console uses UTF-8 code page so printing UTF-8 bytes works when fallback is used.
     // WriteConsoleW will be used for interactive console output but setting CP_UTF8 helps
     // in some fallback/redirection scenarios.

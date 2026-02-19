@@ -125,6 +125,15 @@
   <ItemGroup>
     <ClCompile Include="SimpleSteamIdler.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\resources\resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\SimpleSteamIdler.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\resources\resource.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
