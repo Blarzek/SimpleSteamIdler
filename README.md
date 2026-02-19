@@ -25,12 +25,47 @@ Simulates a Steam game running to unlock trading cards without launching the gam
 
 ---
 
+## Content
+
+SimpleSteamIdler/
+├─ resources/
+│   ├─ resource.h
+│   ├─ resources.rc
+│   └─ SimpleSteamIdler.ico
+├─ src/
+│   ├─ SimpleSteamIdler.cpp
+│   ├─ SimpleSteamIdler.sln
+│   ├─ SimpleSteamIdler.vcxproj
+│   └─ SimpleSteamIdler.vcxproj.filters
+├─ compile.bat
+└─ (Output executable)
+
+---
+
 ## Compilation
 
-Open **x64 Native Tools Command Prompt for VS** and run:
+Simply run `compile.bat`
+
+Or:
+
+1. Open **x64 Native Tools Command Prompt for VS**
+
+This will assume the code is in the directory `C:/SimpleSteamIdler`
+
+2. Run the following commands:
 
 ```bat
-cl /O2 /EHsc SimpleSteamIdler.cpp winhttp.lib
+cd C:/SimpleSteamIdler
+rc.exe /fo resources\resources.res resources\resources.rc
+cl.exe /EHsc /Iresources /c src\SimpleSteamIdler.cpp
+link SimpleSteamIdler.obj resources\resources.res /OUT:SimpleSteamIdler.exe
+```
+
+3. Optionally, delete temporary files:
+
+```bat
+del SimpleSteamIdler.obj
+del resources\resources.res
 ```
 
 This generates `SimpleSteamIdler.exe`.
