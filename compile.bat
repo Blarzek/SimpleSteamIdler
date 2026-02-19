@@ -5,7 +5,7 @@ REM =========================================
 
 REM --- Configura la ruta a tu Visual Studio 2026 ---
 REM Cambia la ruta si tu VS está en otra ubicación
-set VS_DEV_CMD="D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+set VS_DEV_CMD="D:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat"
 
 if not exist %VS_DEV_CMD% (
     echo ERROR: No se encontro vcvars64.bat. Revisa la ruta en build.bat
