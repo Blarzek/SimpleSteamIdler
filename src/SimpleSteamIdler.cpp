@@ -22,6 +22,7 @@
 
 #include <windows.h>
 #include <winhttp.h>
+#include <stdlib.h>
 
 #include <algorithm>
 #include <atomic>
@@ -371,14 +372,31 @@ static void save_appid_to_file(const string& appid, const char* filename = "stea
     }
 }
 
+// -------------------------------------------------------------------------
 // --------------------------- Main program flow ---------------------------
+// -------------------------------------------------------------------------
 
-int main(int argc, char* argv[])
+int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int)
 {
+    AllocConsole();
+    freopen("CONOUT$", "w", stdout);
+    freopen("CONOUT$", "w", stderr);
+    freopen("CONIN$", "r", stdin);
+
+    // Title and icon
+    SetConsoleTitleW(L"SimpleSteamIdler");
+
+    HWND hwndConsole = GetConsoleWindow();
+    HICON hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_APP_ICON));
+    if (hIcon && hwndConsole) {
+        SendMessage(hwndConsole, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+        SendMessage(hwndConsole, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+    }
+
     // Welcome message
-    print_utf8_line("===============================================");
-    print_utf8_line("=   Welcome to SimpleSteamIdler, by Blarzek   =");
-    print_utf8_line("===============================================");
+    print_utf8_line("===================================================");
+    print_utf8_line("===   Welcome to SimpleSteamIdler, by Blarzek   ===");
+    print_utf8_line("===================================================");
 
     // Empty line below for spacing
     print_utf8_line("");
@@ -389,23 +407,11 @@ int main(int argc, char* argv[])
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    // Title and icon
-    SetConsoleTitleW(L"SimpleSteamIdler");
-
-    HICON hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_APP_ICON));
-    if (hIcon) {
-        HWND hwndConsole = GetConsoleWindow();
-        if (hwndConsole) {
-            SendMessage(hwndConsole, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
-            SendMessage(hwndConsole, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
-        }
-    }
-
     // Candidate appid: priority argv[1] > steam_appid.txt > user input
     string candidate_appid;
 
-    if (argc > 1 && argv[1] && argv[1][0] != '\0') {
-        candidate_appid = trim(string(argv[1]));
+    if (__argc > 1 && __argv[1] && __argv[1][0] != '\0') {
+        candidate_appid = trim(std::string(__argv[1]));
     }
     else {
         candidate_appid = read_appid_from_file();

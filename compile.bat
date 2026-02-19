@@ -16,9 +16,9 @@ set blue_on=%_esc%[36m
 set light_blue_on=%_esc%[96m
 set color_off=%_esc%[0m
 
-echo %yellow_on%===========================================================%color_off%
-echo %yellow_on%=== Welcome to SimpleSteamIdler compilation, by Blarzek ===%color_off%
-echo %yellow_on%===========================================================%color_off%
+echo %yellow_on%===============================================================%color_off%
+echo %yellow_on%===   Welcome to SimpleSteamIdler compilation, by Blarzek   ===%color_off%
+echo %yellow_on%===============================================================%color_off%
 echo.
 
 REM --- Configura la ruta a tu Visual Studio 2026 ---
@@ -61,7 +61,7 @@ if errorlevel 1 (
 )
 
 echo %light_blue_on%(4/5) Linkeando ejecutable...%color_off%
-link %OBJ% %RESOURCE_OBJ% /OUT:%OUT% >nul
+link %OBJ% %RESOURCE_OBJ% /OUT:%OUT% /SUBSYSTEM:WINDOWS >nul
 if errorlevel 1 (
     echo %red_on%Error linkeando ejecutable.%color_off%
     pause

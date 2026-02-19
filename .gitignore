@@ -16,6 +16,8 @@
 *.lib
 *.pdb
 *.idb
+*.aps
+*.res
 
 # Release folders
 release/
