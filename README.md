@@ -27,18 +27,20 @@ Simulates a Steam game running to unlock trading cards without launching the gam
 
 ## Content
 
-> SimpleSteamIdler/
-> ├─ resources/
-> │   ├─ resource.h
-> │   ├─ resources.rc
-> │   └─ SimpleSteamIdler.ico
-> ├─ src/
-> │   ├─ SimpleSteamIdler.cpp
-> │   ├─ SimpleSteamIdler.sln
-> │   ├─ SimpleSteamIdler.vcxproj
-> │   └─ SimpleSteamIdler.vcxproj.filters
-> ├─ compile.bat
-> └─ (Output executable)
+```
+SimpleSteamIdler/
+├─ resources/
+│   ├─ resource.h
+│   ├─ resources.rc
+│   └─ SimpleSteamIdler.ico
+├─ src/
+│   ├─ SimpleSteamIdler.cpp
+│   ├─ SimpleSteamIdler.sln
+│   ├─ SimpleSteamIdler.vcxproj
+│   └─ SimpleSteamIdler.vcxproj.filters
+├─ compile.bat
+└─ (Output executable)
+```
 
 ---
 

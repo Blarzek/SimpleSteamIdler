@@ -18,6 +18,8 @@
 
 #define NOMINMAX
 
+#include "../resources/resource.h"
+
 #include <windows.h>
 #include <winhttp.h>
 
@@ -36,6 +38,7 @@
 #include <vector>
 
 #pragma comment(lib, "winhttp.lib")
+#pragma comment(lib, "user32.lib")
 
 using std::string;
 
@@ -385,6 +388,18 @@ int main(int argc, char* argv[])
     // in some fallback/redirection scenarios.
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
+
+    // Title and icon
+    SetConsoleTitleW(L"SimpleSteamIdler");
+
+    HICON hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_APP_ICON));
+    if (hIcon) {
+        HWND hwndConsole = GetConsoleWindow();
+        if (hwndConsole) {
+            SendMessage(hwndConsole, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+            SendMessage(hwndConsole, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+        }
+    }
 
     // Candidate appid: priority argv[1] > steam_appid.txt > user input
     string candidate_appid;
